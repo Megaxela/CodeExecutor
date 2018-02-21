@@ -1,7 +1,3 @@
-//
-// Created by megaxela on 1/5/18.
-//
-
 #include "CodeExecutor/Source.hpp"
 
 CodeExecutor::SourcePtr CodeExecutor::Source::createFromSource(std::string content)

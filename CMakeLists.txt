@@ -3,9 +3,11 @@ project(CodeExecutor)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(include)
+option(CODEEXECUTOR_BUILD_EXAMPLE "Build example" On)
 
-add_subdirectory(example)
+if (${CODEEXECUTOR_BUILD_EXAMPLE})
+    add_subdirectory(example)
+endif()
 
 add_library(CodeExecutor
         src/CodeExecutor/Builder.cpp
@@ -25,4 +27,12 @@ add_library(CodeExecutor
         include/CodeExecutor/Library.hpp
         src/CodeExecutor/Process.cpp
         include/CodeExecutor/Process.hpp
+        src/CodeExecutor/CommonCompiler.cpp
+        include/CodeExecutor/CommonCompiler.hpp
+        src/CodeExecutor/CommonLinker.cpp
+        include/CodeExecutor/CommonLinker.hpp
+)
+
+target_include_directories(CodeExecutor PUBLIC
+    include
 )

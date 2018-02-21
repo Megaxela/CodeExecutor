@@ -1,7 +1,3 @@
-//
-// Created by megaxela on 1/5/18.
-//
-
 #include <algorithm>
 #include "CodeExecutor/Builder.hpp"
 

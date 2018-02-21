@@ -1,11 +1,38 @@
-//
-// Created by megaxela on 1/6/18.
-//
-
 #include <zconf.h>
 #include <fcntl.h>
 #include <wait.h>
 #include "CodeExecutor/Process.hpp"
+
+template<typename Stream>
+void readFd(int fd, Stream& ss)
+{
+    char buffer[1024];
+
+    while (true)
+    {
+        auto result = read(fd, buffer, 1024);
+
+        if (result < 0)
+        {
+            if (errno == EAGAIN)
+            {
+                continue;
+            }
+            else
+            {
+                return;
+            }
+        }
+        else if (result == 0)
+        {
+            return;
+        }
+
+        buffer[result] = '\0';
+
+        ss << buffer;
+    }
+}
 
 CodeExecutor::Process::Process() :
     m_workingDirectory(std::filesystem::current_path()),

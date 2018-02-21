@@ -1,7 +1,3 @@
-//
-// Created by megaxela on 1/6/18.
-//
-
 #pragma once
 
 #include <string>
@@ -139,37 +135,6 @@ namespace CodeExecutor
         int start();
 
     private:
-
-        template<typename Stream>
-        void readFd(int fd, Stream& ss)
-        {
-            char buffer[1024];
-
-            while (true)
-            {
-                auto result = read(fd, buffer, 1024);
-
-                if (result < 0)
-                {
-                    if (errno == EAGAIN)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-                else if (result == 0)
-                {
-                    return;
-                }
-
-                buffer[result] = '\0';
-
-                ss << buffer;
-            }
-        }
 
         bool makeNonBlocking(int fd);
 
