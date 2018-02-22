@@ -6,7 +6,7 @@
 namespace CodeExecutor
 {
     /**
-     * @brief Class, that descibes common
+     * @brief Class, that describes common
      * linker for `gcc` or `clang`.
      */
     class CommonLinker : public Linker

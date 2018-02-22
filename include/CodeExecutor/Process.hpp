@@ -48,7 +48,7 @@ namespace CodeExecutor
          * @brief Get stdout content.
          * @return Out content.
          */
-        std::string readStardardOutput() const;
+        std::string readStandardOutput() const;
 
         /**
          * @brief Method for getting path to

@@ -6,6 +6,10 @@
 
 namespace CodeExecutor
 {
+    class Builder;
+
+    using BuilderPtr = std::shared_ptr<Builder>;
+
     /**
      * @brief Class, that describes object
      * that serves full process of building,

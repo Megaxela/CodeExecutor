@@ -78,7 +78,7 @@ std::string CodeExecutor::Process::readStandardError() const
     return m_stderrStream.str();
 }
 
-std::string CodeExecutor::Process::readStardardOutput() const
+std::string CodeExecutor::Process::readStandardOutput() const
 {
     return m_stdoutStream.str();
 }

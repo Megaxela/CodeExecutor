@@ -4,9 +4,14 @@ project(CodeExecutor)
 set(CMAKE_CXX_STANDARD 17)
 
 option(CODEEXECUTOR_BUILD_EXAMPLE "Build example" On)
+option(CODEEXECUTOR_BUILD_TESTS "Build tests" On)
 
 if (${CODEEXECUTOR_BUILD_EXAMPLE})
     add_subdirectory(example)
+endif()
+
+if (${CODEEXECUTOR_BUILD_TESTS})
+    add_subdirectory(tests)
 endif()
 
 add_library(CodeExecutor
@@ -31,6 +36,10 @@ add_library(CodeExecutor
         include/CodeExecutor/CommonCompiler.hpp
         src/CodeExecutor/CommonLinker.cpp
         include/CodeExecutor/CommonLinker.hpp
+)
+
+target_link_libraries(CodeExecutor
+        stdc++fs
 )
 
 target_include_directories(CodeExecutor PUBLIC

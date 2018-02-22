@@ -7,5 +7,4 @@ add_executable(Example
 target_link_libraries(Example
     CodeExecutor
     dl
-    stdc++fs
 )

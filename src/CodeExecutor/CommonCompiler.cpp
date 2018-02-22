@@ -7,7 +7,8 @@ CodeExecutor::CommonCompiler::CommonCompiler(std::filesystem::path pathToCompile
 }
 
 CodeExecutor::ObjectPtr
-CodeExecutor::CommonCompiler::compile(CodeExecutor::SourcePtr source, const std::filesystem::path& output,
+CodeExecutor::CommonCompiler::compile(CodeExecutor::SourcePtr source,
+                                      const std::filesystem::path& output,
                                       CodeExecutor::BuildingContextPtr buildingContext)
 {
     Process process(m_path);
@@ -78,8 +79,11 @@ CodeExecutor::CommonCompiler::compile(CodeExecutor::SourcePtr source, const std:
 
     if (result != 0)
     {
-        throw std::runtime_error("Can't compile source.");
+        throw std::runtime_error("Can't compile source. Error: " + process.readStandardError());
     }
+
+    setError(std::move(process.readStandardError()));
+    setOutput(std::move(process.readStandardOutput()));
 
     return std::make_shared<Object>(output);
 }
